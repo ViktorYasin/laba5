@@ -11,16 +11,16 @@ class Country{
     int population;
     float area;
     float gdp;
-    int num;
+    int number;
 
-    Country(string name, string capital, string code, int population,  float area,  float gdp, int num){
+    Country(string name, string capital, string code, int population,  float area,  float gdp, int number){
         this -> name = name;
         this -> capital = capital;
         this -> code = code;
-        this -> population = population;
+        this -> population = population; /*посилання на обэкт*/
         this -> area = area;
         this -> gdp = gdp;
-        this -> num = num;
+        this -> number = number;
     }
    
 };
@@ -36,7 +36,7 @@ class Land{
     void insert(){
         country.push_back(Country("USA","Wshngtn","+1",331000000, 9834000, 22996, 2));
         country.push_back(Country("China","Peking","+86",1412000000, 9597000, 12556.33, 2));
-        country.push_back(Country("Spanish","Madrid","+34",47330000, 505990,30115.71, 1));;
+        country.push_back(Country("Spanish","Madrid","+34",47330000, 505990,30115.71, 1));; /*вставка елемента в кынець вектора*/
         country.push_back(Country("Germany","Berlin","+49",83130000, 357588, 50801.79, 2));
         country.push_back(Country("France","Paris","+33",67500000, 643801, 43518.54, 2));
 
@@ -50,17 +50,17 @@ class Land{
             cout<<country[i].population<<"\t";
             cout<<country[i].area<<"\t";
             cout<<country[i].gdp<<"\t";
-            cout<< getNum(i)<<endl;
+            cout<< get_num(i)<<endl;
         }
     }
-     float claculatePopulationDensity(){
+     float calculate_population_density(){
         for (int i = 0; i < country.size(); i++)
         {
             cout<< country[i].name<<"\t"<<country[i].population/country[i].area<<endl; 
         }
         
     }
-    void topOfCounry(){
+    void top_of_country(){
         for(int i = 0; i < country.size(); i++){
             for(int x = 0; x < country.size()-1; x++){
                 if(country[x].gdp<country[x+1].gdp){
@@ -68,16 +68,15 @@ class Land{
                 }
             }
         }
-
     }
-    string getNum(int a){
-        if(country[a].num==1){
+    string get_num(int a){
+        if(country[a].number==1){
             return"DEMOCRACY";
         }
-        if(country[a].num==2){
+        if(country[a].number==2){
             return"REPUBLIC";
         }
-        if(country[a].num==3){
+        if(country[a].number==3){
             return"AUTOCRACY";
         }
     }
@@ -93,7 +92,7 @@ class Land{
                 cout<<country[i].population<<"\t";
                 cout<<country[i].area<<"\t";
                 cout<<country[i].gdp<<"\t";
-                cout<< getNum(i)<<endl;
+                cout<< get_num(i)<<endl;
             }
 
         }
@@ -103,8 +102,8 @@ class Land{
 int main(){
     Land land;
     land.insert();
-    land.claculatePopulationDensity();
-    land.topOfCounry();
+    land.calculate_population_density();
+    land.top_of_country();
     land.print();
     land.object();
 }
